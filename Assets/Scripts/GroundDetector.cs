@@ -5,30 +5,35 @@ using UnityEngine;
 public class GroundDetector : MonoBehaviour
 {
     bool _isGrounded = false;
+    Rigidbody2D rb;
 
-    public bool IsGrounded { get => _isGrounded; }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        checkGroundCollider(other, true);
+    void Start(){
+        rb = GetComponentInParent<Rigidbody2D>();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        checkGroundCollider(other, true);
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        checkGroundCollider(other, false);
-    }
-
-    private void checkGroundCollider(Collider2D other, bool grounded)
-    {
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            _isGrounded = grounded;
+    public bool IsGrounded{
+        get{
+            return _isGrounded;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && rb.velocityY<=0){
+            _isGrounded = true;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other){
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && rb.velocityY<=0){
+            _isGrounded = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other){
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")){
+            _isGrounded = false;
+        }
+    }
+
+
 }

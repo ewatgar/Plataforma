@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHSpeed: 10
-  hAccel: 30
+  hAccel: 20
   hDeccel: 30
   jumpImpulse: 5
 --- !u!61 &741387630
@@ -1158,7 +1158,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.8, y: 0.8}
+    oldSize: {x: 1.25, y: 1.25}
     newSize: {x: 0.8, y: 0.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

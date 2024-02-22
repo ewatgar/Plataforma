@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public float maxHSpeed = 10, hAccel = 30, hDeccel = 30, jumpImpulse = 5;
     int dir = 1;
+    private float lastY;
+    private bool bIsJumping;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         float vx = 0;
+        float vy = 0;
         float dx = Input.GetAxis("Horizontal");
         float dy = Input.GetAxis("Vertical");
 
@@ -40,6 +43,29 @@ public class PlayerController : MonoBehaviour
         rb.velocityX = vx;
 
         jumpPlayer(dy);
+
+        checkJump();
+        //vy = rb.velocityY;
+        Vector2 localVelocity = transform.InverseTransformDirection(rb.velocity);
+        vy = localVelocity.y;
+        an.SetFloat("Vy", Math.Abs(vy));
+
+        an.SetBool("IsJumping", bIsJumping);
+
+    }
+
+    private void checkJump()
+    {
+        float currentY = transform.position.y;
+        if (currentY > lastY && !gd.IsGrounded)
+        {
+            bIsJumping = true;
+        }
+        else
+        {
+            bIsJumping = false;
+        }
+        lastY = currentY;
     }
 
     private float acceleratePlayer(float vx, float dx)

@@ -9,11 +9,9 @@ public class PlayerController : MonoBehaviour
     Animator an;
     GroundDetector gd;
 
-    public float maxHSpeed = 10,
-                hAccel = 30, hDeccel = 30, jumpImpulse = 5;
+    public float maxHSpeed = 10, hAccel = 30, hDeccel = 30, jumpImpulse = 5;
     int dir = 1;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,7 +19,6 @@ public class PlayerController : MonoBehaviour
         gd = GetComponentInChildren<GroundDetector>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         float vx = 0;
@@ -30,46 +27,66 @@ public class PlayerController : MonoBehaviour
 
         if (dx == 0)
         {
-            float delta = hDeccel * Time.fixedDeltaTime;
-            if (rb.velocityY != 0)
-            {
-                delta = hDeccel * 0.25f * Time.fixedDeltaTime;
-            }
-            else
-            {
-                delta = hDeccel * Time.fixedDeltaTime;
-            }
-
-            // Deceleramos al personaje en la dirección contraria a su movimiento
-            if (rb.velocityX > 0)
-            {
-                // Me muevo hacia la derecha
-                vx = rb.velocityX - delta;
-                if (vx < 0) vx = 0;
-            }
-            else if (rb.velocityX < 0)
-            {
-                // Me muevo hacia la izquierda
-                vx = rb.velocityX + delta;
-                if (vx > 0) vx = 0;
-            }
+            vx = deceleratePlayer(vx);
         }
         else
         {
-            // Aceleramos en la dirección indicada por dx
-            vx = rb.velocityX + dx * hAccel * Time.fixedDeltaTime;
-            vx = Mathf.Clamp(vx, -maxHSpeed, maxHSpeed);
-
+            vx = acceleratePlayer(vx, dx);
         }
 
-        if (dx > 0) dir = 1;
-        if (dx < 0) dir = -1;
-
-        transform.localScale = new Vector3(dir, 1, 1);
+        faceDirection(dx);
 
         an.SetFloat("Vx", Math.Abs(vx));
         rb.velocityX = vx;
 
+        jumpPlayer(dy);
+    }
+
+    private float acceleratePlayer(float vx, float dx)
+    {
+        // Aceleramos en la dirección indicada por dx
+        vx = rb.velocityX + dx * hAccel * Time.fixedDeltaTime;
+        vx = Mathf.Clamp(vx, -maxHSpeed, maxHSpeed);
+        return vx;
+    }
+
+    private float deceleratePlayer(float vx)
+    {
+        float delta;
+        if (rb.velocityY != 0)
+        {
+            delta = hDeccel * 0.25f * Time.fixedDeltaTime;
+        }
+        else
+        {
+            delta = hDeccel * Time.fixedDeltaTime;
+        }
+
+        // Deceleramos al personaje en la dirección contraria a su movimiento
+        if (rb.velocityX > 0)
+        {
+            // Me muevo hacia la derecha
+            vx = rb.velocityX - delta;
+            if (vx < 0) vx = 0;
+        }
+        else if (rb.velocityX < 0)
+        {
+            // Me muevo hacia la izquierda
+            vx = rb.velocityX + delta;
+            if (vx > 0) vx = 0;
+        }
+        return vx;
+    }
+
+    private void faceDirection(float dx)
+    {
+        if (dx > 0) dir = 1;
+        if (dx < 0) dir = -1;
+        transform.localScale = new Vector3(dir, 1, 1);
+    }
+
+    private void jumpPlayer(float dy)
+    {
         if (dy > 0 && gd.IsGrounded)
         {
             rb.AddForceY(jumpImpulse, ForceMode2D.Impulse);

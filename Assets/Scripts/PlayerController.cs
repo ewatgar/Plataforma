@@ -28,40 +28,50 @@ public class PlayerController : MonoBehaviour
         float dx = Input.GetAxis("Horizontal");
         float dy = Input.GetAxis("Vertical");
 
-        if (dx==0){
-            float delta = hDeccel*Time.fixedDeltaTime;
-            if (rb.velocityY!=0){
-                delta = hDeccel*0.25f*Time.fixedDeltaTime;
-            }else{
-                delta = hDeccel*Time.fixedDeltaTime;
+        if (dx == 0)
+        {
+            float delta = hDeccel * Time.fixedDeltaTime;
+            if (rb.velocityY != 0)
+            {
+                delta = hDeccel * 0.25f * Time.fixedDeltaTime;
+            }
+            else
+            {
+                delta = hDeccel * Time.fixedDeltaTime;
             }
 
             // Deceleramos al personaje en la dirección contraria a su movimiento
-            if (rb.velocityX>0){
+            if (rb.velocityX > 0)
+            {
                 // Me muevo hacia la derecha
                 vx = rb.velocityX - delta;
-                if (vx < 0) vx=0;
-            }else if(rb.velocityX<0){
+                if (vx < 0) vx = 0;
+            }
+            else if (rb.velocityX < 0)
+            {
                 // Me muevo hacia la izquierda
                 vx = rb.velocityX + delta;
-                if (vx > 0) vx=0;
+                if (vx > 0) vx = 0;
             }
-        }else{
+        }
+        else
+        {
             // Aceleramos en la dirección indicada por dx
-            vx = rb.velocityX + dx*hAccel*Time.fixedDeltaTime;
+            vx = rb.velocityX + dx * hAccel * Time.fixedDeltaTime;
             vx = Mathf.Clamp(vx, -maxHSpeed, maxHSpeed);
 
         }
-        
-        if (dx>0) dir = 1;
-        if (dx<0) dir = -1;
 
-        transform.localScale = new Vector3(dir,1,1);
+        if (dx > 0) dir = 1;
+        if (dx < 0) dir = -1;
+
+        transform.localScale = new Vector3(dir, 1, 1);
 
         an.SetFloat("Vx", Math.Abs(vx));
         rb.velocityX = vx;
-        
-        if (dy>0 && gd.IsGrounded){
+
+        if (dy > 0 && gd.IsGrounded)
+        {
             rb.AddForceY(jumpImpulse, ForceMode2D.Impulse);
         }
     }

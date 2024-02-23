@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     Animator an;
     GroundDetector gd;
 
-    public float maxSpeed = 10, hAccel = 10, hDeccel = 10, jumpImpulse = 7.5f;
+    public float maxSpeed = 10, hAccel = 30, hDeccel = 30, jumpImpulse = 11;
     int dir = 1;
     private float lastY;
     private bool bIsJumping;
@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
         jumpPlayer(dy);
 
         checkJump();
-        //vy = rb.velocityY;
         Vector2 localVelocity = transform.InverseTransformDirection(rb.velocity);
         vy = localVelocity.y;
         an.SetFloat("Vy", Math.Abs(vy));
@@ -115,8 +114,7 @@ public class PlayerController : MonoBehaviour
     {
         if (dy > 0 && gd.IsGrounded)
         {
-            rb.velocityY += jumpImpulse;
-            //rb.AddForceY(jumpImpulse, ForceMode2D.Impulse);
+            rb.AddForceY(jumpImpulse, ForceMode2D.Impulse);
         }
     }
 }

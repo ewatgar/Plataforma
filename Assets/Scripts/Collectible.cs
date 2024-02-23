@@ -34,10 +34,9 @@ public class Collectible : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log("Manzana :)");
             playerHealth = other.GetComponent<PlayerHealth>();
             playerHealth.Heal(1);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -50,15 +49,14 @@ public class Collectible : MonoBehaviour
 
             for (float t = 0; t < 1; t += Time.deltaTime * animSpeed)
             {
-                transform.position = Vector2.Lerp(minHeight, maxHeight, Mathf.SmoothStep(0, 1, t));
+                transform.position = Vector2.Lerp(minHeight, maxHeight, t);
                 yield return null;
             }
             for (float t = 0; t < 1; t += Time.deltaTime * animSpeed)
             {
-                transform.position = Vector2.Lerp(maxHeight, minHeight, Mathf.SmoothStep(0, 1, t));
+                transform.position = Vector2.Lerp(maxHeight, minHeight, t);
                 yield return null;
             }
         }
     }
-
 }

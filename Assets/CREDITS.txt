@@ -1,0 +1,5 @@
+--------- Assets used -----------------------------------
+Biome American Forest	OOO Superposition Principle Inc.	https://assetstore.unity.com/packages/2d/environments/2d-pixel-art-platformer-biome-american-forest-255694
+Fruits				 	OOO Superposition Principle Inc.	https://assetstore.unity.com/packages/2d/gui/icons/2d-pixel-art-icons-fruits-258332
+Chicken					vmiinv								https://vmiinv.itch.io/chickenpack-asset
+BEE!					KingKelpo							https://kingkelp.itch.io/bee

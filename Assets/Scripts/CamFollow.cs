@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CamFollow : MonoBehaviour
 {
+    PlayerHealth playerHealth;
     [SerializeField]
     GameObject target;
     Vector3 velocidad = Vector3.zero;

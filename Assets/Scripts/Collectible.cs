@@ -8,6 +8,7 @@ public class Collectible : MonoBehaviour
     private Vector2 initHeight;
     [SerializeField] float animAmplitude = 0.5f;
     [SerializeField] float animSpeed = 1f;
+    [SerializeField] int hp = 1;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class Collectible : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             playerHealth = other.GetComponent<PlayerHealth>();
-            playerHealth.Heal(1);
+            playerHealth.Heal(hp);
             Destroy(gameObject);
         }
     }

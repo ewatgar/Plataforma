@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator an;
@@ -11,8 +11,10 @@ public class PlayerController : MonoBehaviour
 
     public float maxSpeed = 10, hAccel = 30, hDeccel = 30, jumpImpulse = 11;
     int dir = 1;
-    private float lastY;
-    private bool bIsJumping;
+    float lastY;
+    bool bIsJumping;
+    [HideInInspector] public bool canMove = true;
+
 
     void Start()
     {
@@ -28,21 +30,26 @@ public class PlayerController : MonoBehaviour
         float dx = Input.GetAxis("Horizontal");
         float dy = Input.GetAxis("Vertical");
 
-        if (dx == 0)
+        if (canMove)
         {
-            vx = deceleratePlayer(vx);
+            if (dx == 0)
+            {
+                vx = deceleratePlayer(vx);
+            }
+            else
+            {
+                vx = acceleratePlayer(vx, dx);
+            }
         }
-        else
-        {
-            vx = acceleratePlayer(vx, dx);
-        }
-
         faceDirection(dx);
 
         an.SetFloat("Vx", Math.Abs(vx));
         rb.velocityX = vx;
 
-        jumpPlayer(dy);
+        if (canMove)
+        {
+            jumpPlayer(dy);
+        }
 
         checkJump();
         Vector2 localVelocity = transform.InverseTransformDirection(rb.velocity);
@@ -53,19 +60,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void checkJump()
-    {
-        float currentY = transform.position.y;
-        if (currentY > lastY && !gd.IsGrounded)
-        {
-            bIsJumping = true;
-        }
-        else
-        {
-            bIsJumping = false;
-        }
-        lastY = currentY;
-    }
+
 
     private float acceleratePlayer(float vx, float dx)
     {
@@ -116,5 +111,19 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForceY(jumpImpulse, ForceMode2D.Impulse);
         }
+    }
+
+    private void checkJump()
+    {
+        float currentY = transform.position.y;
+        if (currentY > lastY && !gd.IsGrounded)
+        {
+            bIsJumping = true;
+        }
+        else
+        {
+            bIsJumping = false;
+        }
+        lastY = currentY;
     }
 }

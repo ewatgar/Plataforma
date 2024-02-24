@@ -21,7 +21,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            playerHealth = other.GetComponent<PlayerHealth>();
+            playerHealth = other.GetComponentInParent<PlayerHealth>();
             playerHealth.Heal(hp);
             Destroy(gameObject);
         }

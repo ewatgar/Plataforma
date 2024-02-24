@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeathTrigger : MonoBehaviour
 {
@@ -27,8 +29,8 @@ public class DeathTrigger : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            playerHealth = other.GetComponent<PlayerHealth>();
-            StartCoroutine(playerHealth.Dying(false));
+            playerHealth = other.GetComponentInParent<PlayerHealth>();
+            playerHealth.FallDeath();
         }
     }
 }

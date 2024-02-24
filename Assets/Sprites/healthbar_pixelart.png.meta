@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 86dad06ac5ac74243aebd608ba1eea35
+guid: 725865eca5a15234e898b87e907e6972
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7729105491243978623
-    second: SteamMan_run_0
+      213: -5335079726008426202
+    second: healthbar_pixelart_0
   - first:
-      213: -5324354391246644213
-    second: SteamMan_run_1
+      213: 3394614478995305023
+    second: healthbar_pixelart_1
   - first:
-      213: 4779663516953972575
-    second: SteamMan_run_2
+      213: -4766831405120198111
+    second: healthbar_pixelart_2
   - first:
-      213: 5136082909016690785
-    second: SteamMan_run_3
-  - first:
-      213: 1553644587458834420
-    second: SteamMan_run_4
-  - first:
-      213: 2765629330799976805
-    second: SteamMan_run_5
+      213: 818910407150731903
+    second: healthbar_pixelart_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -66,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,127 +109,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SteamMan_run_0
+      name: healthbar_pixelart_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 64
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62121e2714df5f5b0800000000000000
+      internalID: -5335079726008426202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healthbar_pixelart_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 64
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f32b9e912e71c1f20800000000000000
+      internalID: 3394614478995305023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healthbar_pixelart_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 64
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12a62a1c710d8ddb0800000000000000
+      internalID: -4766831405120198111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healthbar_pixelart_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
+        width: 64
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 180b1ea9183bcb490800000000000000
-      internalID: -7729105491243978623
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SteamMan_run_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b0cd37b04e71c16b0800000000000000
-      internalID: -5324354391246644213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SteamMan_run_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f5f8fe915a6c45240800000000000000
-      internalID: 4779663516953972575
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SteamMan_run_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 16015e09138074740800000000000000
-      internalID: 5136082909016690785
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SteamMan_run_4
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ff21be4587af8510800000000000000
-      internalID: 1553644587458834420
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SteamMan_run_5
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 561ebb2393d716620800000000000000
-      internalID: 2765629330799976805
+      spriteID: f7207113daa5d5b00800000000000000
+      internalID: 818910407150731903
       vertices: []
       indices: 
       edges: []
@@ -243,7 +195,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e09c2fc7a4d1ca945ad7a7a99a4de315
+    spriteID: a66f1024da131194cb504fc6303675aa
     internalID: 0
     vertices: []
     indices: 
@@ -251,12 +203,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SteamMan_run_0: -7729105491243978623
-      SteamMan_run_1: -5324354391246644213
-      SteamMan_run_2: 4779663516953972575
-      SteamMan_run_3: 5136082909016690785
-      SteamMan_run_4: 1553644587458834420
-      SteamMan_run_5: 2765629330799976805
+      healthbar_pixelart_0: -5335079726008426202
+      healthbar_pixelart_1: 3394614478995305023
+      healthbar_pixelart_2: -4766831405120198111
+      healthbar_pixelart_3: 818910407150731903
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

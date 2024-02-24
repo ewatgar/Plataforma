@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     float lastY;
     bool bIsJumping;
     [HideInInspector] public bool canMove = true;
+    float vx = 0;
+    float vy = 0;
+    float dx = 0;
+    float dy = 0;
 
 
     void Start()
@@ -25,44 +29,34 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float vx = 0;
-        float vy = 0;
-        float dx = Input.GetAxis("Horizontal");
-        float dy = Input.GetAxis("Vertical");
-
+        dx = Input.GetAxis("Horizontal");
+        dy = Input.GetAxis("Vertical");
         if (canMove)
         {
-            if (dx == 0)
-            {
-                vx = deceleratePlayer(vx);
-            }
-            else
-            {
-                vx = acceleratePlayer(vx, dx);
-            }
-        }
-        faceDirection(dx);
-
-        an.SetFloat("Vx", Math.Abs(vx));
-        rb.velocityX = vx;
-
-        if (canMove)
-        {
-            jumpPlayer(dy);
+            Movement();
         }
 
-        checkJump();
-        Vector2 localVelocity = transform.InverseTransformDirection(rb.velocity);
-        vy = localVelocity.y;
-        an.SetFloat("Vy", Math.Abs(vy));
-
-        an.SetBool("IsJumping", bIsJumping);
-
+        InitAnimatorParameters();
     }
 
+    private void Movement()
+    {
+        FaceDirection(dx);
 
+        if (dx == 0)
+        {
+            vx = Decelerate(vx);
+        }
+        else
+        {
+            vx = Accelerate(vx, dx);
+        }
+        rb.velocityX = vx;
 
-    private float acceleratePlayer(float vx, float dx)
+        Jump(dy);
+    }
+
+    private float Accelerate(float vx, float dx)
     {
         // Aceleramos en la dirección indicada por dx
         vx = rb.velocityX + dx * hAccel * Time.fixedDeltaTime;
@@ -70,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         return vx;
     }
 
-    private float deceleratePlayer(float vx)
+    private float Decelerate(float vx)
     {
         float delta;
         if (rb.velocityY != 0)
@@ -98,22 +92,32 @@ public class PlayerMovement : MonoBehaviour
         return vx;
     }
 
-    private void faceDirection(float dx)
+    private void FaceDirection(float dx)
     {
         if (dx > 0) dir = 1;
         if (dx < 0) dir = -1;
         transform.localScale = new Vector3(dir, 1, 1);
     }
 
-    private void jumpPlayer(float dy)
+    private void Jump(float dy)
     {
         if (dy > 0 && gd.IsGrounded)
         {
             rb.AddForceY(jumpImpulse, ForceMode2D.Impulse);
         }
+
+        CalculateJumpVelocity();
+
+        CheckJumping();
     }
 
-    private void checkJump()
+    private void CalculateJumpVelocity()
+    {
+        Vector2 localVelocity = transform.InverseTransformDirection(rb.velocity);
+        vy = localVelocity.y;
+    }
+
+    private void CheckJumping()
     {
         float currentY = transform.position.y;
         if (currentY > lastY && !gd.IsGrounded)
@@ -125,5 +129,13 @@ public class PlayerMovement : MonoBehaviour
             bIsJumping = false;
         }
         lastY = currentY;
+    }
+
+
+    private void InitAnimatorParameters()
+    {
+        an.SetFloat("Vx", Math.Abs(vx));
+        an.SetFloat("Vy", Math.Abs(vy));
+        an.SetBool("IsJumping", bIsJumping);
     }
 }

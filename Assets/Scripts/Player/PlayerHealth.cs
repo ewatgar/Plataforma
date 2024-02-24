@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     Animator animator;
     public int maxHealth = 3;
     [SerializeField] private int _health = 3;
+    [SerializeField] private GameObject healthBar;
+    [SerializeField] private Sprite[] healthBarSprites;
 
     public int Health
     {
@@ -24,19 +26,6 @@ public class PlayerHealth : MonoBehaviour
         Health = _health;
     }
 
-    private void Update()
-    {
-        if (Health <= 0)
-        {
-            Dead();
-        }
-    }
-
-    public void Dead()
-    {
-        StartCoroutine(Dying());
-    }
-
     public void Heal(int hp)
     {
         Health += hp;
@@ -44,29 +33,34 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (Health > 0)
+        if (Health > 1)
         {
             Health -= damage;
             animator.Play("PlayerDamage");
             animator.Play("PlayerIdle");
         }
+        else if (Health == 1)
+        {
+            Health -= damage;
+            Dead();
+        }
+        Debug.Log(Health);
     }
 
-    public IEnumerator DeadRestart()
+    public void Dead()
     {
-        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(Dying(true));
+    }
+
+    public IEnumerator Dying(bool playAnimation)
+    {
+        playerMovement.canMove = false;
+        if (playAnimation) animator.Play("PlayerDie");
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Health = maxHealth;
         yield return new WaitForSeconds(0.5f);
         playerMovement.canMove = true;
         animator.Play("PlayerIdle");
-    }
-
-    IEnumerator Dying()
-    {
-        playerMovement.canMove = false;
-        animator.Play("PlayerDie");
-        yield return new WaitForSeconds(1);
-        StartCoroutine(DeadRestart());
     }
 }

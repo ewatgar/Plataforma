@@ -15,20 +15,20 @@ public class DeathTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Death(other);
+        FallDeath(other);
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        Death(other);
+        FallDeath(other);
     }
 
-    private void Death(Collider2D other)
+    private void FallDeath(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             playerHealth = other.GetComponent<PlayerHealth>();
-            StartCoroutine(playerHealth.DeadRestart());
+            StartCoroutine(playerHealth.Dying(false));
         }
     }
 }

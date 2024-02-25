@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,17 +11,16 @@ public class PlayerMovement : MonoBehaviour
     GroundDetector gd;
 
     [SerializeField] int dir = 1;
-    [SerializeField] bool bIsJumping;
     public float maxSpeed = 10, hAccel = 30, hDeccel = 30, jumpImpulse = 11;
     public float maxSpeedWater = 5;
     public float jumpDecreaseWater = 40;
+    public bool bIsJumping = false;
     public bool bIsInWater = false;
     public bool canMove = true;
     float vx = 0;
     float vy = 0;
     float dx = 0;
     float dy = 0;
-    float lastY;
 
     void Start()
     {
@@ -113,16 +113,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dy > 0 && bIsInWater)
         {
+            rb.velocityY = 0;
             rb.AddForceY(jumpImpulse / jumpDecreaseWater, ForceMode2D.Impulse);
+            bIsJumping = true;
         }
         else if (dy > 0 && gd.IsGrounded)
         {
+            rb.velocityY = 0;
             rb.AddForceY(jumpImpulse, ForceMode2D.Impulse);
+            bIsJumping = true;
+        }
+        else if (vy == 0 && gd.IsGrounded)
+        {
+            bIsJumping = false;
         }
 
         CalculateJumpVelocity();
-
-        CheckJumping();
     }
 
     private void CalculateJumpVelocity()
@@ -130,21 +136,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 localVelocity = transform.InverseTransformDirection(rb.velocity);
         vy = localVelocity.y;
     }
-
-    private void CheckJumping()
-    {
-        float currentY = transform.position.y;
-        if (currentY > lastY && !gd.IsGrounded && !bIsInWater)
-        {
-            bIsJumping = true;
-        }
-        else
-        {
-            bIsJumping = false;
-        }
-        lastY = currentY;
-    }
-
 
     private void InitAnimatorParameters()
     {

@@ -26,7 +26,9 @@ public class WaterTrigger : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             playerMovement = other.GetComponentInParent<PlayerMovement>();
+            //playerMovement.bIsJumping = false;
             playerMovement.bIsInWater = waterState;
+            Debug.Log("waterstate: " + waterState);
         }
     }
 }

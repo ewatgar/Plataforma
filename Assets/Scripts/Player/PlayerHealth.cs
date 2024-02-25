@@ -26,30 +26,34 @@ public class PlayerHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         Health = initHealth;
         ChangeHealthBarValue(Health);
-        Debug.Log("vida inicial: " + Health);
     }
 
     public void Heal(int hp)
     {
         Health += hp;
         ChangeHealthBarValue(Health);
-        Debug.Log("player se cura, vida actual: " + Health);
     }
 
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        if (Health > 1)
+        if (Health > 0)
         {
-            animator.Play("PlayerDamage");
-            animator.Play("PlayerIdle");
+            StartCoroutine(DamageAnimation());
         }
-        else if (Health == 1)
+        else
         {
             Dead();
         }
         ChangeHealthBarValue(Health);
-        Debug.Log("player recibe daño, vida actual: " + Health);
+    }
+
+    IEnumerator DamageAnimation()
+    {
+        animator.Play("PlayerDamage");
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(0.5f);
+        animator.Play("PlayerIdle");
     }
 
     public void Dead()
@@ -61,7 +65,7 @@ public class PlayerHealth : MonoBehaviour
     {
         playerMovement.canMove = false;
         if (playAnimation) animator.Play("PlayerDie");
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         yield return new WaitForSeconds(0.5f);
         Health = maxHealth;

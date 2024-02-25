@@ -9,6 +9,12 @@ public class Enemy : MonoBehaviour
     Rigidbody2D playerRigidbody;
     [SerializeField] int damage = 1;
     [SerializeField] float damageImpulse = 2;
+    float seconds = 0;
+
+    private void FixedUpdate()
+    {
+        seconds += Time.fixedDeltaTime;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,12 +28,13 @@ public class Enemy : MonoBehaviour
 
     private void Damage(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && seconds > 1)
         {
             playerHealth = other.GetComponentInParent<PlayerHealth>();
             playerRigidbody = other.GetComponentInParent<Rigidbody2D>();
 
             playerHealth.TakeDamage(damage);
+            seconds = 0;
             DamageImpulse(other);
         }
     }

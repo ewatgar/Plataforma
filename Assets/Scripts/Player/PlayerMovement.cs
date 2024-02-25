@@ -9,16 +9,18 @@ public class PlayerMovement : MonoBehaviour
     Animator an;
     GroundDetector gd;
 
+    [SerializeField] int dir = 1;
+    [SerializeField] bool bIsJumping;
     public float maxSpeed = 10, hAccel = 30, hDeccel = 30, jumpImpulse = 11;
-    int dir = 1;
-    float lastY;
-    bool bIsJumping;
-    [HideInInspector] public bool canMove = true;
+    public float maxSpeedWater = 5;
+    public float jumpDecreaseWater = 40;
+    public bool bIsInWater = false;
+    public bool canMove = true;
     float vx = 0;
     float vy = 0;
     float dx = 0;
     float dy = 0;
-
+    float lastY;
 
     void Start()
     {
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         dx = Input.GetAxis("Horizontal");
         dy = Input.GetAxis("Vertical");
+
         if (canMove)
         {
             Movement();
@@ -60,7 +63,14 @@ public class PlayerMovement : MonoBehaviour
     {
         // Aceleramos en la dirección indicada por dx
         vx = rb.velocityX + dx * hAccel * Time.fixedDeltaTime;
-        vx = Mathf.Clamp(vx, -maxSpeed, maxSpeed);
+        if (bIsInWater)
+        {
+            vx = Mathf.Clamp(vx, -maxSpeedWater, maxSpeedWater);
+        }
+        else
+        {
+            vx = Mathf.Clamp(vx, -maxSpeed, maxSpeed);
+        }
         return vx;
     }
 
@@ -101,7 +111,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(float dy)
     {
-        if (dy > 0 && gd.IsGrounded)
+        if (dy > 0 && bIsInWater)
+        {
+            rb.AddForceY(jumpImpulse / jumpDecreaseWater, ForceMode2D.Impulse);
+        }
+        else if (dy > 0 && gd.IsGrounded)
         {
             rb.AddForceY(jumpImpulse, ForceMode2D.Impulse);
         }
@@ -120,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
     private void CheckJumping()
     {
         float currentY = transform.position.y;
-        if (currentY > lastY && !gd.IsGrounded)
+        if (currentY > lastY && !gd.IsGrounded && !bIsInWater)
         {
             bIsJumping = true;
         }
@@ -137,5 +151,6 @@ public class PlayerMovement : MonoBehaviour
         an.SetFloat("Vx", Math.Abs(vx));
         an.SetFloat("Vy", Math.Abs(vy));
         an.SetBool("IsJumping", bIsJumping);
+        an.SetBool("IsInWater", bIsInWater);
     }
 }

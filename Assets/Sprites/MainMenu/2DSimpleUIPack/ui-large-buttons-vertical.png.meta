@@ -1,44 +1,14 @@
 fileFormatVersion: 2
-guid: b1e90a4cefc1f2a409ac727d50028c54
+guid: 26c248721685da44ca34ad60faea50ba
 AssetOrigin:
   serializedVersion: 1
   productId: 218050
   packageName: 2D Simple UI Pack
   packageVersion: 1.0
-  assetPath: Assets/OArielG/2DSimpleUIPack/Examples/Graphics/ui-large-buttons-vertical.png
+  assetPath: Assets/OArielG/2DSimpleUIPack/Sprites/ui-large-buttons-vertical.png
   uploadId: 493490
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 7270360567275473960
-    second: ui-large-buttons-vertical_0
-  - first:
-      213: 193080379733523790
-    second: ui-large-buttons-vertical_1
-  - first:
-      213: 8144830250928574055
-    second: ui-large-buttons-vertical_2
-  - first:
-      213: -7788335289141158404
-    second: ui-large-buttons-vertical_3
-  - first:
-      213: 1970096131925664716
-    second: ui-large-buttons-vertical_4
-  - first:
-      213: 2175170692806309127
-    second: ui-large-buttons-vertical_5
-  - first:
-      213: -5385119147101723431
-    second: ui-large-buttons-vertical_6
-  - first:
-      213: -449724113356055567
-    second: ui-large-buttons-vertical_7
-  - first:
-      213: -5804767965583246865
-    second: ui-large-buttons-vertical_8
-  - first:
-      213: -1869882300962442916
-    second: ui-large-buttons-vertical_9
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -85,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,7 +76,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -119,10 +89,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -148,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82c46797a6285e460800000000000000
-      internalID: 7270360567275473960
+      spriteID: 9cea91ac42f87cc4ea7355e1f0ec78a6
+      internalID: -419703464
       vertices: []
       indices: 
       edges: []
@@ -169,8 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4d3d171595fda200800000000000000
-      internalID: 193080379733523790
+      spriteID: 50f1d12412b22504e99ed4ec7643833c
+      internalID: 718877313
       vertices: []
       indices: 
       edges: []
@@ -190,8 +160,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76e0476c5ff380170800000000000000
-      internalID: 8144830250928574055
+      spriteID: 8651d0e027baa584dac649d909a4c10c
+      internalID: 1460705219
       vertices: []
       indices: 
       edges: []
@@ -211,8 +181,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfd1a13a1564ae390800000000000000
-      internalID: -7788335289141158404
+      spriteID: 1ca16624d33adfb41992bc5b525852db
+      internalID: -764755960
       vertices: []
       indices: 
       edges: []
@@ -232,8 +202,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc3ecc47eff275b10800000000000000
-      internalID: 1970096131925664716
+      spriteID: 229df457b1f353249ab37a26e360a941
+      internalID: 1133630474
       vertices: []
       indices: 
       edges: []
@@ -253,8 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7057f867832cf2e10800000000000000
-      internalID: 2175170692806309127
+      spriteID: 55dadf027c63c524fb6d2c0bee0fc29f
+      internalID: 537584451
       vertices: []
       indices: 
       edges: []
@@ -274,8 +244,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d4e8d3daa63445b0800000000000000
-      internalID: -5385119147101723431
+      spriteID: ca5c557e71dc6ae4c9c5741b3a089858
+      internalID: -273062860
       vertices: []
       indices: 
       edges: []
@@ -295,8 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fb1c783d4242c9f0800000000000000
-      internalID: -449724113356055567
+      spriteID: cd16ebeb2872b674698a209b74ed66cc
+      internalID: -336138489
       vertices: []
       indices: 
       edges: []
@@ -316,8 +286,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe9f7df4a42517fa0800000000000000
-      internalID: -5804767965583246865
+      spriteID: 096b4f3a363608341922e60258487cd9
+      internalID: 1940225611
       vertices: []
       indices: 
       edges: []
@@ -337,8 +307,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c51f75f44f7dc06e0800000000000000
-      internalID: -1869882300962442916
+      spriteID: 53c3f66de4561bd45ba12ccafec59d49
+      internalID: -1422906015
       vertices: []
       indices: 
       edges: []
@@ -354,16 +324,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ui-large-buttons-vertical_0: 7270360567275473960
-      ui-large-buttons-vertical_1: 193080379733523790
-      ui-large-buttons-vertical_2: 8144830250928574055
-      ui-large-buttons-vertical_3: -7788335289141158404
-      ui-large-buttons-vertical_4: 1970096131925664716
-      ui-large-buttons-vertical_5: 2175170692806309127
-      ui-large-buttons-vertical_6: -5385119147101723431
-      ui-large-buttons-vertical_7: -449724113356055567
-      ui-large-buttons-vertical_8: -5804767965583246865
-      ui-large-buttons-vertical_9: -1869882300962442916
+      ui-large-buttons-vertical_0: -419703464
+      ui-large-buttons-vertical_1: 718877313
+      ui-large-buttons-vertical_2: 1460705219
+      ui-large-buttons-vertical_3: -764755960
+      ui-large-buttons-vertical_4: 1133630474
+      ui-large-buttons-vertical_5: 537584451
+      ui-large-buttons-vertical_6: -273062860
+      ui-large-buttons-vertical_7: -336138489
+      ui-large-buttons-vertical_8: 1940225611
+      ui-large-buttons-vertical_9: -1422906015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

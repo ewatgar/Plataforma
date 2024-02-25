@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: a11ea103d81f8dd4b896a5dcd08d3fcc
+guid: 497877696662aee47ba7434638be1ea7
 AssetOrigin:
   serializedVersion: 1
   productId: 218050
   packageName: 2D Simple UI Pack
   packageVersion: 1.0
-  assetPath: Assets/OArielG/2DSimpleUIPack/Sprites/ui-small-buttons.png
+  assetPath: Assets/OArielG/2DSimpleUIPack/Sprites/ui-small-icons.png
   uploadId: 493490
 TextureImporter:
   internalIDToNameTable: []
@@ -55,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1

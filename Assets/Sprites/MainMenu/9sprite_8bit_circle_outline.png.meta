@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      9sprite_8bit_circle_outline_0: 198610345067750395
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
